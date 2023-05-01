@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/directoryInfo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBg"
+    tools:context=".DirectoryInfo">
+
+
+    <ImageView
+        android:id="@+id/direction_rev_image"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/SchoolServicesTitle"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_direction" />
+
+    <ImageView
+        android:id="@+id/direction_rev_logo"
+        android:layout_width="141dp"
+        android:layout_height="139dp"
+        app:layout_constraintBottom_toBottomOf="@+id/direction_rev_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="@+id/direction_rev_image"
+        app:srcCompat="@drawable/ic_direction_logo" />
+
+    <TextView
+        android:id="@+id/direction_rev_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/SchoolServicesTitle"
+        android:fontFamily="@font/rotonda_bold"
+        android:text="@string/Course_name"
+        android:textColor="#FFFFFFFF"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/direction_rev_image" />
+
+    <ImageView
+        android:id="@+id/direction_rev_logo_na"
+        android:layout_width="217dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/new_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/direction_rev_image"
+        app:layout_constraintStart_toStartOf="@+id/direction_rev_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/direction_rev_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/rotonda_bold"
+        android:gravity="center"
+        android:text="@string/About"
+        android:textColor="#00BCD4"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/direction_rev_image"
+        app:layout_constraintTop_toBottomOf="@+id/direction_rev_image" />
+
+    <ScrollView
+        android:id="@+id/direction_rev_min_tv1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/direction_rev_image"
+        app:layout_constraintTop_toBottomOf="@+id/direction_rev_head">
+
+        <TextView
+            android:id="@+id/direction_rev_min_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rotondac_thin"
+            android:justificationMode="inter_word"
+            android:lineSpacingExtra="3dp"
+            android:text="@string/direction_rev_min"
+            android:textColor="#4C4C4C"
+            android:textSize="16sp" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/direction_button_write"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_button_rounded"
+        android:fontFamily="@font/rotonda_bold"
+        android:onClick="openWritePage"
+        android:text="@string/Course_Write"
+        android:textColor="@color/mainBg"
+        android:textSize="16sp"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintEnd_toEndOf="@+id/direction_rev_min_tv1"
+        app:layout_constraintStart_toEndOf="@+id/direction_rev_min_tv1"
+        app:layout_constraintStart_toStartOf="@+id/direction_rev_min_tv1"
+        app:layout_constraintTop_toBottomOf="@+id/direction_rev_min_tv1" />
+
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/direction_rev_min_tv"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="15dp"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_marginEnd="15dp"-->
+    <!--            android:fontFamily="@font/rotondac_thin"-->
+    <!--            android:justificationMode="inter_word"-->
+    <!--            android:text="@string/direction_rev_min"-->
+    <!--            android:textSize="16sp"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toEndOf="@+id/coordinatorLayout_rev"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/direction_rev_head" />-->
+
+    <!--    -->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/direction_button_write"-->
+    <!--            android:layout_width="250dp"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:background="@drawable/bg_button_rounded"-->
+    <!--            android:fontFamily="@font/rotonda_bold"-->
+    <!--            android:text="@string/Course_Write"-->
+    <!--            android:textColor="@color/mainBg"-->
+    <!--            android:textSize="16sp"-->
+    <!--            app:backgroundTint="#00BCD4"-->
+    <!--            app:layout_constraintEnd_toEndOf="@+id/direction_rev_min_tv"-->
+    <!--            app:layout_constraintStart_toEndOf="@+id/direction_rev_min_tv"-->
+    <!--            app:layout_constraintStart_toStartOf="@+id/direction_rev_min_tv"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/direction_rev_min_tv" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
