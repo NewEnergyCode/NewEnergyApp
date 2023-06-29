@@ -1,7 +1,6 @@
-package com.example.selecthelper.adapters;
+package com.example.newenergyschool.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.selecthelper.DirectoryInfo;
-import com.example.selecthelper.MainActivity;
-import com.example.selecthelper.R;
-import com.example.selecthelper.model.Catagory;
+import com.example.newenergyschool.MainActivity;
+import com.example.newenergyschool.R;
+import com.example.newenergyschool.model.Catagory;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBg"
-    tools:context=".MapMenu">
+    tools:context=".MainMenu">
 
     <TextView
         android:id="@+id/main_page"
@@ -43,6 +43,7 @@
         android:fontFamily="@font/rotonda_bold"
         android:gravity="center_horizontal"
         android:text="@string/Contacts"
+        android:onClick="contacts"
         android:textColor="#00BCD4"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"

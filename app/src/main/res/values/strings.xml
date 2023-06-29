@@ -69,6 +69,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="phone_number_text">093 123 45 67</string>
 
 
 </resources>

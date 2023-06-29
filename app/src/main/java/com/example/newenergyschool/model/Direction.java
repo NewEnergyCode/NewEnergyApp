@@ -1,4 +1,4 @@
-package com.example.selecthelper.model;
+package com.example.newenergyschool.model;
 
 public class Direction {
 

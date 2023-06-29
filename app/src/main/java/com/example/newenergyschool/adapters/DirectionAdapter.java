@@ -1,10 +1,9 @@
-package com.example.selecthelper.adapters;
+package com.example.newenergyschool.adapters;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.selecthelper.DirectoryInfo;
-import com.example.selecthelper.DirectoryRigester;
-import com.example.selecthelper.MapMenu;
-import com.example.selecthelper.R;
-import com.example.selecthelper.WritePageActivity;
-import com.example.selecthelper.model.Direction;
+import com.example.newenergyschool.DirectoryInfo;
+import com.example.newenergyschool.R;
+import com.example.newenergyschool.WritePageActivity;
+import com.example.newenergyschool.model.Direction;
 
 import java.util.List;
 

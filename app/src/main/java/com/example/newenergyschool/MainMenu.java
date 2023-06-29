@@ -1,4 +1,4 @@
-package com.example.selecthelper;
+package com.example.newenergyschool;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,10 +6,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.selecthelper.ui.login.LoginActivity;
+import com.example.newenergyschool.ui.login.LoginActivity;
 
 
-public class MapMenu extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,4 +21,10 @@ public class MapMenu extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+    public void contacts (View view) {//TODO: make contact page
+        Intent intent = new Intent(this, DirectoryRegister.class);
+        startActivity(intent);
+    }
+
+
 }

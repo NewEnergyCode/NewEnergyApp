@@ -1,14 +1,13 @@
-package com.example.selecthelper;
+package com.example.newenergyschool;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.selecthelper.model.Direction;
+import com.example.newenergyschool.model.Direction;
 
 import java.util.ArrayList;
 import java.util.List;

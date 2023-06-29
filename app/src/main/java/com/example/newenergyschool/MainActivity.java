@@ -1,4 +1,4 @@
-package com.example.selecthelper;
+package com.example.newenergyschool;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.selecthelper.adapters.CategoryAdapter;
-import com.example.selecthelper.adapters.DirectionAdapter;
-import com.example.selecthelper.model.Catagory;
-import com.example.selecthelper.model.Direction;
+import com.example.newenergyschool.adapters.CategoryAdapter;
+import com.example.newenergyschool.adapters.DirectionAdapter;
+import com.example.newenergyschool.model.Catagory;
+import com.example.newenergyschool.model.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showMenu(View view) {
-        Intent intent = new Intent(this, MapMenu.class);
+        Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
 

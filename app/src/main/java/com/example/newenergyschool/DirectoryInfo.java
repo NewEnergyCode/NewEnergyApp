@@ -1,4 +1,4 @@
-package com.example.selecthelper;
+package com.example.newenergyschool;
 
 import android.content.Intent;
 import android.os.Bundle;
