@@ -23,8 +23,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/directionRec"
-        android:layout_width="0dp"
-        android:layout_height="446dp"
+        android:layout_width="399dp"
+        android:layout_height="355dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="5dp"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/new_logo" />
+            app:srcCompat="@drawable/svg" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -68,5 +68,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <TextView
+        android:id="@+id/userRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:text="Авторизированный пользователь"
+        android:textColor="#00BCD4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/directionRec" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,8 @@ import com.example.newenergyschool.adapters.CategoryAdapter;
 import com.example.newenergyschool.adapters.DirectionAdapter;
 import com.example.newenergyschool.model.Catagory;
 import com.example.newenergyschool.model.Direction;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +29,31 @@ public class MainActivity extends AppCompatActivity {
 
     static List<Direction> fullDirectionList = new ArrayList<>();
 
+
+    private FirebaseAuth mAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
         Resources res = getResources();
+        mAuth = FirebaseAuth.getInstance();
+
+        // Проверяем состояние аутентификации при запуске активности
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Пользователь уже аутентифицирован, отображаем надпись для зарегистрированных пользователей
+            TextView textView = findViewById(R.id.userRegister);
+            textView.setText("Авторизированный пользователь: " + currentUser.getPhoneNumber());
+            textView.setVisibility(View.VISIBLE);
+        } else {
+            // Пользователь не аутентифицирован, скрываем надпись для зарегистрированных пользователей
+            TextView textView = findViewById(R.id.userRegister);
+            textView.setText("Аавторизируйтесь для отображения дополнительных возможностей.");
+            textView.setVisibility(View.VISIBLE);
+        }
 
         List<Catagory> categoryAgeList = new ArrayList<>();
         categoryAgeList.add(new Catagory(1, "1 год"));
@@ -117,5 +139,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
+
 
 }

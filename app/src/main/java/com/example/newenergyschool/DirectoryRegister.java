@@ -34,7 +34,7 @@ public class DirectoryRegister extends AppCompatActivity {
 
     private static final String TAG = "PhoneAuthActivity";
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-
+    private FirebaseAuth firebaseAuth;
     private EditText phone;
     private EditText otp;
 
@@ -61,7 +61,7 @@ public class DirectoryRegister extends AppCompatActivity {
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                        Toast.makeText(DirectoryRegister.this, "Ver fal", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DirectoryRegister.this, "Ошибка авторизации, попробуйте снова.", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -71,7 +71,14 @@ public class DirectoryRegister extends AppCompatActivity {
                         mVerificationId = s;
                     }
                 };
-                startPhoneNumberVerification(phone.getText().toString());
+                String telephoneNumber = phone.getText().toString();
+                if (telephoneNumber == null) {
+                    Toast.makeText(DirectoryRegister.this, "Введите номер телефона.", Toast.LENGTH_SHORT).show();
+                } else if (telephoneNumber.toCharArray().length != 10) {
+                    Toast.makeText(DirectoryRegister.this, "Введеный номер не верен.", Toast.LENGTH_SHORT).show();
+                } else {
+                    startPhoneNumberVerification(phone.getText().toString());
+                }
             }
         });
 
@@ -90,7 +97,11 @@ public class DirectoryRegister extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = auth.getCurrentUser();
-        updateUI(currentUser);
+//        if (currentUser.getUid().equals(firebaseAuth.getUid())) {
+            updateUI(currentUser);
+//        }else {
+//            Toast.makeText(DirectoryRegister.this, "Пользоватль существует.", Toast.LENGTH_SHORT).show();
+//        }
     }
 
 
