@@ -72,12 +72,13 @@ public class DirectoryRegister extends AppCompatActivity {
                     }
                 };
                 String telephoneNumber = phone.getText().toString();
-                if (telephoneNumber == null) {
+                if (telephoneNumber.equals("+38")) {
                     Toast.makeText(DirectoryRegister.this, "Введите номер телефона.", Toast.LENGTH_SHORT).show();
                 } else if (telephoneNumber.toCharArray().length != 10) {
                     Toast.makeText(DirectoryRegister.this, "Введеный номер не верен.", Toast.LENGTH_SHORT).show();
                 } else {
                     startPhoneNumberVerification(phone.getText().toString());
+                    Toast.makeText(DirectoryRegister.this, "Ожидайте СМС с кодом.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -91,22 +92,16 @@ public class DirectoryRegister extends AppCompatActivity {
 
     }
 
-    // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = auth.getCurrentUser();
-//        if (currentUser.getUid().equals(firebaseAuth.getUid())) {
-            updateUI(currentUser);
-//        }else {
-//            Toast.makeText(DirectoryRegister.this, "Пользоватль существует.", Toast.LENGTH_SHORT).show();
-//        }
+        updateUI(currentUser);
+
     }
 
 
     private void startPhoneNumberVerification(String phoneNumber) {
-
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(auth)
                         .setPhoneNumber("+38" + phoneNumber)       // Phone number to verify
@@ -120,16 +115,12 @@ public class DirectoryRegister extends AppCompatActivity {
     }
 
     private void verifyPhoneNumberWithCode(String code) {
-        // [START verify_with_code]
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
         signInWithPhoneAuthCredential(credential);
-        // [END verify_with_code]
     }
 
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-
-
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -141,7 +132,7 @@ public class DirectoryRegister extends AppCompatActivity {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
+                            // The verification code entered was invalid
                             }
                         }
                     }

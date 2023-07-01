@@ -61,8 +61,6 @@ public class WritePageActivity extends AppCompatActivity {
     };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-//        spinner.setDrawingCacheBackgroundColor(Color.MAGENTA);
-
         spinner.setAdapter(adapter);
 
 

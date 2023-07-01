@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,17 +44,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Проверяем состояние аутентификации при запуске активности
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        TextView textView = findViewById(R.id.userRegister);
+
         if (currentUser != null) {
             // Пользователь уже аутентифицирован, отображаем надпись для зарегистрированных пользователей
-            TextView textView = findViewById(R.id.userRegister);
             textView.setText("Авторизированный пользователь: " + currentUser.getPhoneNumber());
-            textView.setVisibility(View.VISIBLE);
+            showButtonsForAuthOrNotAuthUsers(true);
+
         } else {
             // Пользователь не аутентифицирован, скрываем надпись для зарегистрированных пользователей
-            TextView textView = findViewById(R.id.userRegister);
-            textView.setText("Аавторизируйтесь для отображения дополнительных возможностей.");
-            textView.setVisibility(View.VISIBLE);
+            textView.setText("Авторизируйтесь для отображения дополнительных возможностей.");
+            showButtonsForAuthOrNotAuthUsers(false);
         }
+        textView.setVisibility(View.VISIBLE);
+
 
         List<Catagory> categoryAgeList = new ArrayList<>();
         categoryAgeList.add(new Catagory(1, "1 год"));
@@ -85,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         categoryRecycler = findViewById(R.id.CategoryRecycler);
         categoryRecycler.setLayoutManager(layoutManager);
-
         categoryAdapter = new CategoryAdapter(this, catagoryList);
         categoryRecycler.setAdapter(categoryAdapter);
     }
@@ -99,6 +102,27 @@ public class MainActivity extends AppCompatActivity {
         directionRecycler.setAdapter(directionAdapter);
     }
 
+    public void showButtonsForAuthOrNotAuthUsers(Boolean s) {
+        Button buttonGallery = findViewById(R.id.button_gallery_main);
+        Button buttonAuthOrCalendar = findViewById(R.id.button_auth_or_calendar_main);
+        if (s) {
+            buttonGallery.setVisibility(View.VISIBLE);
+            buttonAuthOrCalendar.setText("Календарь занятий");
+            buttonAuthOrCalendar.setVisibility(View.VISIBLE);
+        } else {
+            buttonGallery.setVisibility(View.GONE);
+            buttonAuthOrCalendar.setText("Авторизация");
+            buttonAuthOrCalendar.setVisibility(View.VISIBLE);
+            buttonAuthOrCalendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, DirectoryRegister.class);
+                    startActivity(intent);
+                }
+            });
+
+        }
+    }
 
     public static void showDirectionByAge(int age) {
         directionList.clear();

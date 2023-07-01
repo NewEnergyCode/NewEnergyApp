@@ -81,4 +81,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/directionRec" />
 
+    <Button
+        android:id="@+id/button_gallery_main"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_button_rounded"
+        android:fontFamily="@font/rotonda_bold"
+        android:text="Г а л е р е я"
+        android:textColor="@color/mainBg"
+        android:textSize="16sp"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toTopOf="@+id/button_auth_or_calendar_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_auth_or_calendar_main"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_button_rounded"
+        android:fontFamily="@font/rotonda_bold"
+        android:text="Авторизация"
+        android:textColor="@color/mainBg"
+        android:textSize="16sp"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

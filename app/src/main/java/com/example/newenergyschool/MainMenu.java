@@ -18,7 +18,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void myCabinet(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, DirectoryRegister.class);
         startActivity(intent);
     }
     public void contacts (View view) {//TODO: make contact page
