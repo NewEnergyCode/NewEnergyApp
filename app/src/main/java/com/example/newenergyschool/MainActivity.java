@@ -17,6 +17,7 @@ import com.example.newenergyschool.model.Catagory;
 import com.example.newenergyschool.model.Direction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +110,13 @@ public class MainActivity extends AppCompatActivity {
             buttonGallery.setVisibility(View.VISIBLE);
             buttonAuthOrCalendar.setText("Календарь занятий");
             buttonAuthOrCalendar.setVisibility(View.VISIBLE);
+            buttonGallery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, GalleryActivity.class);
+                    startActivity(intent);
+                }
+            });
         } else {
             buttonGallery.setVisibility(View.GONE);
             buttonAuthOrCalendar.setText("Авторизация");

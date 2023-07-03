@@ -45,9 +45,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="81dp"
+            android:layout_width="298dp"
+            android:layout_height="121dp"
             android:layout_marginStart="-40dp"
+            android:contentDescription="@string/newenergylogo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,15 +60,16 @@
 
     <ImageView
         android:id="@+id/menu_open"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="43dp"
         android:onClick="showMenu"
+        android:background="@drawable/bourder_rounded"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+        app:srcCompat="@android:drawable/ic_menu_more" />
 
     <TextView
         android:id="@+id/userRegister"
