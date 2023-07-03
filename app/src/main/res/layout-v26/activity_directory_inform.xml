@@ -6,7 +6,7 @@
     android:id="@+id/directoryInfo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBg"
+
     tools:context=".DirectoryInfo">
 
 
@@ -14,6 +14,7 @@
         android:id="@+id/direction_rev_image"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:background="#FE6A00"
         android:contentDescription="@string/SchoolServicesTitle"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
