@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.newenergyschool.MainActivity;
+import com.example.newenergyschool.ativity.MainActivity;
 import com.example.newenergyschool.R;
 import com.example.newenergyschool.model.Catagory;
 

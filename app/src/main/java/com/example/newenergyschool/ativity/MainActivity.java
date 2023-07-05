@@ -1,4 +1,4 @@
-package com.example.newenergyschool;
+package com.example.newenergyschool.ativity;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.newenergyschool.R;
 import com.example.newenergyschool.adapters.CategoryAdapter;
 import com.example.newenergyschool.adapters.DirectionAdapter;
 import com.example.newenergyschool.model.Catagory;
 import com.example.newenergyschool.model.Direction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            buttonAuthOrCalendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                    startActivity(intent);
+                }
+            });
         } else {
             buttonGallery.setVisibility(View.GONE);
             buttonAuthOrCalendar.setText("Авторизация");
@@ -124,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             buttonAuthOrCalendar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, DirectoryRegister.class);
+                    Intent intent = new Intent(MainActivity.this, DirectoryRegisterActivity.class);
                     startActivity(intent);
                 }
             });
@@ -168,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showMenu(View view) {
-        Intent intent = new Intent(this, MainMenu.class);
+        Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
     }
 

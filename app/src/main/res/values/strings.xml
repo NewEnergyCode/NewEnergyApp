@@ -71,6 +71,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="phone_number_text">093 123 45 67</string>
     <string name="newenergylogo">newEnergyLogo</string>
+    <string name="download_to_gallery">З а г р у з и т ь г а л е р е ю</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
 
 
 </resources>

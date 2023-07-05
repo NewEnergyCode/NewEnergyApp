@@ -16,9 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.newenergyschool.DirectoryInfo;
+import com.example.newenergyschool.ativity.DirectoryInfoActivity;
 import com.example.newenergyschool.R;
-import com.example.newenergyschool.WritePageActivity;
+import com.example.newenergyschool.ativity.WritePageActivity;
 import com.example.newenergyschool.model.Direction;
 
 import java.util.List;
@@ -55,7 +55,7 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.Dire
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DirectoryInfo.class);
+                Intent intent = new Intent(context, DirectoryInfoActivity.class);
 
                 ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context,
                         new Pair<View, String>(holder.directionCourses, "cardView"));
@@ -71,7 +71,7 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.Dire
         holder.buttonDirectionRev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DirectoryInfo.class);
+                Intent intent = new Intent(context, DirectoryInfoActivity.class);
 
                 ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context,
                         new Pair<View, String>(holder.directionCourses, "cardView"));

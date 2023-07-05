@@ -6,19 +6,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:titleTextColor="@color/orangeColor"
     android:background="@color/mainBg"
-    tools:context=".GalleryActivity">
+    android:titleTextColor="@color/asideBgColor"
+    tools:context=".ativity.GalleryActivity">
 
 
     <ImageView
         android:id="@+id/imageGallery"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         android:layout_below="@+id/imageView8"
         android:layout_marginTop="1dp"
-        tools:layout_centerInParent="true" />
+        tools:layout_centerInParent="true"/>
 
     <Button
         android:id="@+id/buttonGallery"
@@ -32,7 +31,7 @@
         android:layout_marginBottom="25dp"
         android:background="@drawable/bg_button_rounded"
         android:fontFamily="@font/rotonda_bold"
-        android:text="З а г р у з и т ь   г а л е р е ю"
+        android:text="@string/download_to_gallery"
         android:textColor="@color/mainBg"
         android:textSize="16sp"
         app:backgroundTint="#00BCD4" />
@@ -42,15 +41,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/imageGallery"
-        android:layout_marginTop="-25dp" />
+        android:layout_marginTop="-25dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        android:gravity="center"/>
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="320dp"
-        android:layout_centerInParent="true"
         android:layout_height="177dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
         android:layout_marginTop="-42dp"

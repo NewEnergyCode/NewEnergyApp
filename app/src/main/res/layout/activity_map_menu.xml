@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBg"
-    tools:context=".MainMenu">
+    tools:context=".ativity.MainMenuActivity">
 
     <TextView
         android:id="@+id/main_page"

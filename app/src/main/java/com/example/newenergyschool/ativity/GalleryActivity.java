@@ -1,26 +1,25 @@
-package com.example.newenergyschool;
+package com.example.newenergyschool.ativity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 //import com.example.newenergyschool.adapters.ImageAdapter;
+import com.example.newenergyschool.R;
 import com.example.newenergyschool.adapters.ImageAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,8 @@ public class GalleryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gallery);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3); // Указываем сколько столбцов
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         imageUris = new ArrayList<>();
         Button buttonGallery = findViewById(R.id.buttonGallery);
@@ -83,9 +83,21 @@ public class GalleryActivity extends AppCompatActivity {
         });
         imageAdapter = new ImageAdapter(imageUris);
         recyclerView.setAdapter(imageAdapter);
+        imageAdapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Uri uri) {
+                Intent intent = new Intent(GalleryActivity.this, PhotoDetailActivity.class);
+                intent.putExtra("imageUri", uri.toString());
+                startActivity(intent);
+            }
+        });
+
 //            }
 //        });
+
     }
+
+
 
 //    private class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 //

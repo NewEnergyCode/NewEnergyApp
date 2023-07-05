@@ -1,4 +1,4 @@
-package com.example.newenergyschool;
+package com.example.newenergyschool.ativity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.newenergyschool.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -21,13 +22,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.concurrent.TimeUnit;
 
-public class DirectoryRegister extends AppCompatActivity {
+public class DirectoryRegisterActivity extends AppCompatActivity {
     FirebaseAuth auth;
     Button buttonRegister, buttonVerification;
     private String mVerificationId;
@@ -61,7 +59,7 @@ public class DirectoryRegister extends AppCompatActivity {
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                        Toast.makeText(DirectoryRegister.this, "Ошибка авторизации, попробуйте снова.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DirectoryRegisterActivity.this, "Ошибка авторизации, попробуйте снова.", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -73,12 +71,12 @@ public class DirectoryRegister extends AppCompatActivity {
                 };
                 String telephoneNumber = phone.getText().toString();
                 if (telephoneNumber.equals("+38")) {
-                    Toast.makeText(DirectoryRegister.this, "Введите номер телефона.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DirectoryRegisterActivity.this, "Введите номер телефона.", Toast.LENGTH_SHORT).show();
                 } else if (telephoneNumber.toCharArray().length != 10) {
-                    Toast.makeText(DirectoryRegister.this, "Введеный номер не верен.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DirectoryRegisterActivity.this, "Введеный номер не верен.", Toast.LENGTH_SHORT).show();
                 } else {
                     startPhoneNumberVerification(phone.getText().toString());
-                    Toast.makeText(DirectoryRegister.this, "Ожидайте СМС с кодом.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DirectoryRegisterActivity.this, "Ожидайте СМС с кодом.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -126,8 +124,8 @@ public class DirectoryRegister extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(DirectoryRegister.this, "Авторизация прошла успешно!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(DirectoryRegister.this, MainActivity.class));
+                            Toast.makeText(DirectoryRegisterActivity.this, "Авторизация прошла успешно!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(DirectoryRegisterActivity.this, MainActivity.class));
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -26,7 +27,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gallery_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gallery_item_grid, parent, false);
         return new ImageViewHolder(view);
     }
 
@@ -34,6 +35,15 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Uri imageUrl = imageUris.get(position);
         Picasso.get().load(imageUrl).into(holder.imageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(imageUrl);
+                }
+            }
+        });
     }
 
     @Override
@@ -49,4 +59,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             imageView = itemView.findViewById(R.id.imageView);
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(Uri uri);
+    }
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
 }
