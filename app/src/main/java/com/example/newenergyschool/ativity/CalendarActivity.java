@@ -1,13 +1,17 @@
 package com.example.newenergyschool.ativity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.newenergyschool.R;
+import com.example.newenergyschool.decorators.EventDecorator;
+import com.example.newenergyschool.model.Lesson;
+import com.example.newenergyschool.model.LoggedInUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -58,63 +62,76 @@ public class CalendarActivity extends AppCompatActivity {
 //                    @NonNull CalendarDay date,
 //                    boolean selected) {
 //                // Обработка выбранной даты
-
-                databaseReference.child(telephoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                            String date = childSnapshot.getKey();
-                            CalendarDay calendarDay = convertDateToCalendarDay(date);
-                            highlightedDates.add(calendarDay);
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Обработка ошибок при чтении из базы данных
-                    }
-                });
-                // Установите цвет выделения для каждой даты
-                calendarView.addDecorator(new EventDecorator(highlightedDates));
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+//
+//                // Преобразование даты в строку
+//                String dateString = dateFormat.format(date.getDate());
+//                databaseReference.child(telephoneNumber).child(dateString).setValue(new Lesson(telephoneNumber, "Мини сад", "12.00", "12-07-2023"));
 //            }
 //        });
+        calendarView.setSelectionColor(Color.rgb(0, 188, 212));
+        calendarView.setDateSelected(calendarDate(null), true);
+        calendarView.addDecorator(todayDay());
 
-    }
-
-    private class EventDecorator implements DayViewDecorator {
-
-        private final List<CalendarDay> highlightedDates;
-
-        public EventDecorator(List<CalendarDay> highlightedDates) {
-            this.highlightedDates = highlightedDates;
-        }
-
-        @Override
-        public boolean shouldDecorate(CalendarDay day) {
-            return highlightedDates.contains(day);
-        }
-
-        @Override
-        public void decorate(DayViewFacade view) {
-            view.addSpan(new DotSpan(10, Color.RED)); // Замените цветом
-        }
-
-
-    }
-        public CalendarDay convertDateToCalendarDay(String date) {
-            try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-                Date parsedDate = dateFormat.parse(date);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(parsedDate);
-                return CalendarDay.from(
-                        calendar.get(Calendar.YEAR),
-                        calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH)
-                );
-            } catch (ParseException e) {
-                e.printStackTrace();
+        databaseReference.child(telephoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    String date = childSnapshot.getKey();
+                    CalendarDay calendarDay = convertDateToCalendarDay(date);
+                    highlightedDates.add(calendarDay);
+                }
+                calendarView.addDecorators(new EventDecorator(highlightedDates)); // Применение декоратора с выделенными датами
+                calendarView.invalidateDecorators();
             }
-            return null;
-        }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Обработка ошибок при чтении из базы данных
+            }
+        });
+        // Установите цвет выделения для каждой даты
+        calendarView.addDecorator(new EventDecorator(highlightedDates));
+
+
     }
+
+
+    public CalendarDay convertDateToCalendarDay(String date) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+            Date parsedDate = dateFormat.parse(date);
+            return calendarDate(parsedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public CalendarDay calendarDate(@Nullable Date date) {
+        Calendar calendar = Calendar.getInstance();
+        if (date != null) {
+            calendar.setTime(date);
+        }
+        return CalendarDay.from(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
+    }
+
+    public DayViewDecorator todayDay() {
+        return new DayViewDecorator() {
+            @Override
+            public boolean shouldDecorate(CalendarDay day) {
+                return day.equals(calendarDate(null));
+            }
+
+            @Override
+            public void decorate(DayViewFacade view) {
+                view.addSpan(new DotSpan(10, Color.rgb(0, 188, 212))); // Замените цветом
+            }
+        };
+    }
+}
 
