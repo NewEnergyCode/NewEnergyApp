@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="mainBg">#F6F6F6</color>
     <color name="asideBgColor">#FF6633</color>
+    <color name="asigeBlueColor">#3EC0DE</color>
 </resources>

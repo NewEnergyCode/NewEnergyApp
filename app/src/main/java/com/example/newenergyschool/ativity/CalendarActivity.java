@@ -3,6 +3,8 @@ package com.example.newenergyschool.ativity;
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,58 +31,37 @@ import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class CalendarActivity extends AppCompatActivity {
-    private DatabaseReference databaseReference;
-    private String selectedDate;
-    private FirebaseUser currentUser;
-    private String telephoneNumber;
     private MaterialCalendarView calendarView;
+    private List<CalendarDay> highlightedDates = new ArrayList<>();
+    private List<Lesson> lessonList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
         calendarView = findViewById(R.id.calendarView);
-        List<CalendarDay> highlightedDates = new ArrayList<>();
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         assert currentUser != null;
-        telephoneNumber = currentUser.getPhoneNumber();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Calendar");
-//        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
-//
-//            @Override
-//            public void onDateSelected(
-//                    @NonNull MaterialCalendarView widget,
-//                    @NonNull CalendarDay date,
-//                    boolean selected) {
-//                // Обработка выбранной даты
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-//
-//                // Преобразование даты в строку
-//                String dateString = dateFormat.format(date.getDate());
-//                databaseReference.child(telephoneNumber).child(dateString).setValue(new Lesson(telephoneNumber, "Мини сад", "12.00", "12-07-2023"));
-//            }
-//        });
+        String telephoneNumber = currentUser.getPhoneNumber();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Calendar");
+
         calendarView.setSelectionColor(Color.rgb(0, 188, 212));
         calendarView.setDateSelected(calendarDate(null), true);
         calendarView.addDecorator(todayDay());
 
+        assert telephoneNumber != null;
         databaseReference.child(telephoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    String date = childSnapshot.getKey();
-                    CalendarDay calendarDay = convertDateToCalendarDay(date);
-                    highlightedDates.add(calendarDay);
-                }
+                getDatabaseValue(dataSnapshot);
                 calendarView.addDecorators(new EventDecorator(highlightedDates)); // Применение декоратора с выделенными датами
                 calendarView.invalidateDecorators();
             }
@@ -91,11 +72,21 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
         // Установите цвет выделения для каждой даты
-        calendarView.addDecorator(new EventDecorator(highlightedDates));
-
+//        calendarView.addDecorator(new EventDecorator(highlightedDates));
+        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(
+                    @NonNull MaterialCalendarView widget,
+                    @NonNull CalendarDay date,
+                    boolean selected) {
+                showDirectionAndTimeOfLesson(date, lessonList);
+//                databaseReference.child(telephoneNumber).child(dateString).getDatabase().getReference().child("coursesName");
+//                calendarDirection.setText(lesson);
+//                String time = dataSnapshot.child("time").getValue(String.class);
+            }
+        });
 
     }
-
 
     public CalendarDay convertDateToCalendarDay(String date) {
         try {
@@ -132,6 +123,50 @@ public class CalendarActivity extends AppCompatActivity {
                 view.addSpan(new DotSpan(10, Color.rgb(0, 188, 212))); // Замените цветом
             }
         };
+    }
+
+    public void showDirectionAndTimeOfLesson(CalendarDay date, List<Lesson> lessonList) {
+        // Обработка выбранной даты
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        // Преобразование даты в строку
+//                databaseReference.child(telephoneNumber).child(dateString).setValue(new Lesson(telephoneNumber, "Мини сад", "12.00", "12-07-2023"));
+        TextView calendarDirection = findViewById(R.id.calendar_direction);
+        TextView calendarTime = findViewById(R.id.calendar_time);
+        String dateString = dateFormat.format(date.getDate());
+        String lesson = null;
+        String time = null;
+
+        for (Lesson les : lessonList) {
+            if (les.getDayOfWeek().equals(dateString)) {
+                lesson = les.getCoursesName();
+                time = les.getTime();
+            }
+        }
+        if (lesson != null) {
+            calendarDirection.setText(lesson);
+            calendarDirection.setVisibility(View.VISIBLE);
+            calendarTime.setText(time);
+            calendarTime.setVisibility(View.VISIBLE);
+        } else {
+            calendarDirection.setVisibility(View.GONE);
+            calendarTime.setVisibility(View.GONE);
+        }
+    }
+
+    public void getDatabaseValue(DataSnapshot dataSnapshot) {
+        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+            Lesson lesson =
+                    new Lesson(
+                            childSnapshot.child("telephoneNumber").getValue(String.class),
+                            childSnapshot.child("coursesName").getValue(String.class),
+                            childSnapshot.child("time").getValue(String.class),
+                            childSnapshot.child("dayOfWeek").getValue(String.class)
+                    );
+            lessonList.add(lesson);
+            String date = childSnapshot.getKey();
+            CalendarDay calendarDay = convertDateToCalendarDay(date);
+            highlightedDates.add(calendarDay);
+        }
     }
 }
 

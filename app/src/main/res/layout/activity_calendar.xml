@@ -9,11 +9,36 @@
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:selectedWeekBackgroundColor="#ff0000"
         android:weekNumberColor="#0000ff"
         android:weekSeparatorLineColor="#00ff00"
-
         />
+
+    <TextView
+        android:id="@+id/calendar_direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textSize="26sp"
+        android:fontFamily="@font/rotonda_bold"
+        android:textColor="@color/asigeBlueColor"
+        android:visibility="invisible"
+        android:text="Направление" />
+
+    <TextView
+        android:id="@+id/calendar_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/rotonda_bold"
+        android:textColor="@color/asigeBlueColor"
+        android:visibility="invisible"
+        android:text="15.00" />
+
 
 </LinearLayout>

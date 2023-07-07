@@ -62,6 +62,7 @@
         android:layout_marginTop="165dp"
         android:ems="10"
         android:inputType="phone"
+        android:textAlignment="center"
         android:text="0931386462"
         android:textColor="#B3B2B2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,10 +73,10 @@
         android:id="@+id/tel_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/rotondac_thin"
         android:text="Введите номер телефона"
         android:textColor="#3EC0DE"
         android:textSize="20sp"
-        android:fontFamily="@font/rotondac_thin"
         app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -104,13 +105,27 @@
         android:background="@drawable/bg_button_rounded"
         android:fontFamily="@font/rotonda_bold"
         android:onClick="openWritePage"
-        android:text="Подтвердить код из СМС"
+        android:text="Подтвердить код"
         android:textColor="@color/mainBg"
         android:textSize="16sp"
         app:backgroundTint="#00BCD4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otp" />
+
+    <TextView
+        android:id="@+id/information_about_auth"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/rotondac_thin"
+        android:text=" "
+        android:textAlignment="center"
+        android:textColor="@color/asigeBlueColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
