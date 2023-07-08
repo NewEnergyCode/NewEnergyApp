@@ -42,7 +42,7 @@ public class DirectoryRegisterActivity extends AppCompatActivity {
         setContentView(R.layout.registration_page);
         auth = FirebaseAuth.getInstance();
 
-        buttonRegister = findViewById(R.id.direction_button_write);
+        buttonRegister = findViewById(R.id.direction_button_sendcode);
         buttonVerification = findViewById(R.id.direction_button_ver);
         phone = this.findViewById(R.id.editTextPhone);
         otp = this.findViewById(R.id.otp);

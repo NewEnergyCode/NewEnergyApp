@@ -15,6 +15,7 @@
         android:ems="10"
         android:inputType="number"
         android:text=""
+        android:textAlignment="center"
         android:textColor="#B3B2B2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +32,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/direction_button_write" />
+        app:layout_constraintTop_toBottomOf="@+id/direction_button_sendcode" />
 
     <TextView
         android:id="@+id/textView2"
@@ -82,7 +83,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/direction_button_write"
+        android:id="@+id/direction_button_sendcode"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"

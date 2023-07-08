@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         setCategoryRecycler(categoryAgeList);
 
-
+directionList.clear();
         directionList.add(new Direction(1, "Раннее\nразвитие", "direction",
                 "#FFFFFFFF", "1-3 года", "early_development", res.getString(R.string.direction_rev_earlyDev), 1));
         directionList.add(new Direction(3, "Мини-сад", "direction", "#FFFFFFFF",
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 "4-12 лет", "drawing", res.getString(R.string.direction_rev_draw), 3));
         directionList.add(new Direction(6, "Подготовка\nк школе ", "direction", "#FFFFFFFF",
                 "4-6 лет", "school", res.getString(R.string.direction_school), 3));
-
+fullDirectionList.clear();
         fullDirectionList.addAll(directionList);
         setDirectionRecycler(directionList);
     }

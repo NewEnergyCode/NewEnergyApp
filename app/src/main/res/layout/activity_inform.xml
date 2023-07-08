@@ -4,27 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBg"
     tools:context=".InformActivity">
 
-    <TextView
-        android:id="@+id/inform_page"
-        android:layout_width="375dp"
-        android:layout_height="504dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="25dp"
-        android:fontFamily="@font/rotondac_thin"
-        android:justificationMode="inter_word"
-        android:lineSpacingExtra="5dp"
-        android:text=""
-        android:textColor="#4C4C4C"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -47,4 +29,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/inform_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="35dp"
+        android:fontFamily="@font/rotondac_thin"
+        android:justificationMode="inter_word"
+        android:lineSpacingExtra="5dp"
+        android:text=""
+        android:textColor="#4C4C4C"
+
+        android:textSize="16sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

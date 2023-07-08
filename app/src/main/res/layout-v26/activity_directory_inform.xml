@@ -14,9 +14,9 @@
         android:id="@+id/direction_rev_image"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:background="@color/asideBgColor"
         android:contentDescription="@string/SchoolServicesTitle"
         android:scaleType="fitXY"
-        android:background="@color/asideBgColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -116,40 +116,6 @@
         app:layout_constraintStart_toEndOf="@+id/direction_rev_min_tv1"
         app:layout_constraintStart_toStartOf="@+id/direction_rev_min_tv1"
         app:layout_constraintTop_toBottomOf="@+id/direction_rev_min_tv1" />
-
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/direction_rev_min_tv"-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginStart="15dp"-->
-    <!--            android:layout_marginTop="10dp"-->
-    <!--            android:layout_marginEnd="15dp"-->
-    <!--            android:fontFamily="@font/rotondac_thin"-->
-    <!--            android:justificationMode="inter_word"-->
-    <!--            android:text="@string/direction_rev_min"-->
-    <!--            android:textSize="16sp"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toEndOf="@+id/coordinatorLayout_rev"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/direction_rev_head" />-->
-
-    <!--    -->
-
-    <!--        <Button-->
-    <!--            android:id="@+id/direction_button_write"-->
-    <!--            android:layout_width="250dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginTop="10dp"-->
-    <!--            android:background="@drawable/bg_button_rounded"-->
-    <!--            android:fontFamily="@font/rotonda_bold"-->
-    <!--            android:text="@string/Course_Write"-->
-    <!--            android:textColor="@color/mainBg"-->
-    <!--            android:textSize="16sp"-->
-    <!--            app:backgroundTint="#00BCD4"-->
-    <!--            app:layout_constraintEnd_toEndOf="@+id/direction_rev_min_tv"-->
-    <!--            app:layout_constraintStart_toEndOf="@+id/direction_rev_min_tv"-->
-    <!--            app:layout_constraintStart_toStartOf="@+id/direction_rev_min_tv"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/direction_rev_min_tv" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

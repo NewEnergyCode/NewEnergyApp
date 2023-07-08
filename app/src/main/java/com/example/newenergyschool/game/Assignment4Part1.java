@@ -1,12 +1,5 @@
 //package com.example.newenergyschool.game;
 //
-//import android.graphics.Canvas;
-//import android.view.View;
-//import android.view.ViewStructure;
-//
-//import androidx.compose.ui.geometry.Rect;
-//import androidx.lifecycle.AndroidViewModel;
-//
 //import acm.graphics.GLabel;
 //import acm.graphics.GObject;
 //import acm.graphics.GOval;
@@ -21,7 +14,7 @@
 //import java.awt.event.MouseEvent;
 //import java.util.ArrayList;
 //
-//public class Assignment4Part1 extends  {
+//public class Assignment4Part1 extends WindowProgram {
 //    /**
 //     * Width and height of application window in pixels
 //     */

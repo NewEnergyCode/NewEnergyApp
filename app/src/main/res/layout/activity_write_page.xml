@@ -78,8 +78,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="50dp"
-        android:scrollbarSize="48dp"
         android:background="@color/mainBg"
+        android:scrollbarSize="48dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +117,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPersonName"
+
         android:text="Имя"
         android:textAlignment="center"
         android:textColor="#B3B2B2"
