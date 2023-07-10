@@ -24,8 +24,10 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void contacts(View view) {//TODO: make contact page
-        Intent intent = new Intent(this, InformActivity.class);
-        intent.putExtra("text", "contacts");
+//        Intent intent = new Intent(this, InformActivity.class);
+//        intent.putExtra("text", "contacts");
+//        startActivity(intent);
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
 
