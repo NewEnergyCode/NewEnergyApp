@@ -1,4 +1,4 @@
-package com.example.newenergyschool.adapters;
+package app.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,9 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.newenergyschool.ativity.MainActivity;
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.model.Catagory;
+
+import app.newenergyschool.R;
+
+import app.ativity.MainActivity;
+
+import app.model.Catagory;
+
 
 import java.util.List;
 

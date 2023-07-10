@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.ativity;
 
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
@@ -10,10 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.decorators.EventDecorator;
-import com.example.newenergyschool.model.Lesson;
-import com.example.newenergyschool.model.LoggedInUser;
+//import com.example.newenergyschool.R;
+import app.decorators.EventDecorator;
+import app.model.Lesson;
+import app.newenergyschool.R;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,11 +32,9 @@ import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 public class CalendarActivity extends AppCompatActivity {
     private MaterialCalendarView calendarView;

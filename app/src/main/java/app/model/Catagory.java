@@ -1,4 +1,4 @@
-package com.example.newenergyschool.model;
+package app.model;
 
 public class Catagory {
     int id;

@@ -1,4 +1,4 @@
-package com.example.newenergyschool.model;
+package app.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

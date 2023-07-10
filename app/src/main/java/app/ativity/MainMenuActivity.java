@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.ativity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newenergyschool.InformActivity;
-import com.example.newenergyschool.R;
-
+import app.InformActivity;
+import app.newenergyschool.R;
 
 public class MainMenuActivity extends AppCompatActivity {
 

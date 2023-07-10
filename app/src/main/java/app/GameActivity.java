@@ -1,9 +1,10 @@
-package com.example.newenergyschool;
+package app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import app.newenergyschool.R;
 public class GameActivity extends AppCompatActivity {
 
     @Override

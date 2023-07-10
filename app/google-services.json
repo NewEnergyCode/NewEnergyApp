@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:978705058086:android:2b960160873f2d8b2e19e7",
         "android_client_info": {
-          "package_name": "com.example.newenergyschool"
+          "package_name": "app.newenergyschool"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "978705058086-burocl6b3dv74r08g988f0q4ef1i0kn2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.newenergyschool",
+            "package_name": "app.newenergyschool",
             "certificate_hash": "e3a418c37b0cdacb29501823bb5f75fea8b05b23"
           }
         },

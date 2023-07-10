@@ -1,12 +1,12 @@
-package com.example.newenergyschool;
+package app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import app.newenergyschool.R;
 public class InformActivity extends AppCompatActivity {
 
     @Override

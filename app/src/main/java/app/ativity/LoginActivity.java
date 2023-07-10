@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.ativity;
 
 import androidx.annotation.NonNull;
 
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.newenergyschool.R;
+import app.newenergyschool.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;

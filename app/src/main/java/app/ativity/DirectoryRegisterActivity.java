@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.ativity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newenergyschool.R;
+//import com.example.newenergyschool.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -25,6 +25,8 @@ import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
+
+import app.newenergyschool.R;
 
 public class DirectoryRegisterActivity extends AppCompatActivity {
     FirebaseAuth auth;
