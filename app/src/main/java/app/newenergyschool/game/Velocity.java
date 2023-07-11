@@ -1,4 +1,4 @@
-package com.example.newenergyschool.game;
+package app.newenergyschool.game;
 
 public class Velocity {
     private int x, y;

@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.newenergyschool.ativity;
 
 
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newenergyschool.R;
+import app.newenergyschool.R;
 import com.squareup.picasso.Picasso;
 
 public class PhotoDetailActivity extends AppCompatActivity {

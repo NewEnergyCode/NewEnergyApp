@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.newenergyschool.ativity;
 
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
@@ -10,10 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.decorators.EventDecorator;
-import com.example.newenergyschool.model.Lesson;
-import com.example.newenergyschool.model.LoggedInUser;
+import app.newenergyschool.R;
+import app.newenergyschool.decorators.EventDecorator;
+import app.newenergyschool.model.Lesson;
+import app.newenergyschool.model.LoggedInUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

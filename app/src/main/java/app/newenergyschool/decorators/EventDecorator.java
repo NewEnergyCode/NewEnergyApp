@@ -1,4 +1,4 @@
-package com.example.newenergyschool.decorators;
+package app.newenergyschool.decorators;
 
 import android.graphics.Color;
 

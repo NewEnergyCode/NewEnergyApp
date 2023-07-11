@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.newenergyschool.ativity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-//import com.example.newenergyschool.adapters.ImageAdapter;
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.adapters.ImageAdapter;
+//import app.newenergyschool.adapters.ImageAdapter;
+import app.newenergyschool.R;
+import app.newenergyschool.adapters.ImageAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;

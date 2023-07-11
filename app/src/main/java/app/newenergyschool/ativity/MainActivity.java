@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.newenergyschool.ativity;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.adapters.CategoryAdapter;
-import com.example.newenergyschool.adapters.DirectionAdapter;
-import com.example.newenergyschool.model.Catagory;
-import com.example.newenergyschool.model.Direction;
+import app.newenergyschool.R;
+import app.newenergyschool.adapters.CategoryAdapter;
+import app.newenergyschool.adapters.DirectionAdapter;
+import app.newenergyschool.model.Catagory;
+import app.newenergyschool.model.Direction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.newenergyschool.ativity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.game.GameView;
+import app.newenergyschool.R;
+import app.newenergyschool.game.GameView;
 
 public class GameActivity extends AppCompatActivity {
 

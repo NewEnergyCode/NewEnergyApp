@@ -1,4 +1,4 @@
-//package com.example.newenergyschool.game;
+//package app.newenergyschool.game;
 //
 //import acm.graphics.GLabel;
 //import acm.graphics.GObject;

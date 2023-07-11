@@ -1,4 +1,4 @@
-package com.example.newenergyschool.ativity;
+package app.newenergyschool.ativity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.ativity.WritePageActivity;
+import app.newenergyschool.R;
+import app.newenergyschool.ativity.WritePageActivity;
 
 public class DirectoryInfoActivity extends AppCompatActivity {
 

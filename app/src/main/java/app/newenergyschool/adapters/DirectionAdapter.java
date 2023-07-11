@@ -1,4 +1,4 @@
-package com.example.newenergyschool.adapters;
+package app.newenergyschool.adapters;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -16,10 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.newenergyschool.ativity.DirectoryInfoActivity;
-import com.example.newenergyschool.R;
-import com.example.newenergyschool.ativity.WritePageActivity;
-import com.example.newenergyschool.model.Direction;
+import app.newenergyschool.ativity.DirectoryInfoActivity;
+import app.newenergyschool.R;
+import app.newenergyschool.ativity.WritePageActivity;
+import app.newenergyschool.model.Direction;
 
 import java.util.List;
 

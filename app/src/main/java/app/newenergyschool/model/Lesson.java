@@ -1,4 +1,4 @@
-package com.example.newenergyschool.model;
+package app.newenergyschool.model;
 
 public class Lesson {
     private String telephoneNumber;

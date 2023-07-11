@@ -1,4 +1,4 @@
-package com.example.newenergyschool;
+package app.newenergyschool;
 
 import androidx.appcompat.app.AppCompatActivity;
 
