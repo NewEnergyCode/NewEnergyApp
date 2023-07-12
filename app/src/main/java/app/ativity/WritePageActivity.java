@@ -18,6 +18,7 @@ import android.widget.Toast;
 import app.newenergyschool.R;
 import app.model.Direction;
 import app.model.LoggedInUser;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,30 +56,42 @@ public class WritePageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String telephoneNumber = phone.getText().toString();
                 String personName = name.getText().toString();
+                if (telephoneNumber.equals("")) {
+                    Toast.makeText(WritePageActivity.this, "Введите номер телефона.", Toast.LENGTH_SHORT).show();
+                } else if (telephoneNumber.toCharArray().length != 10 && telephoneNumber.toCharArray().length != 13) {
+                    Toast.makeText(WritePageActivity.this, "Введеный номер не верен.", Toast.LENGTH_SHORT).show();
+                } else if (personName.equals("Имя")) {
+                    Toast.makeText(WritePageActivity.this, "Введите Ваше имя.", Toast.LENGTH_SHORT).show();
+                } else {
+                    makeWriteForCourses(databaseReference, telephoneNumber, personName);
+                }
 
-                String oldString = direction;
-                String newString = oldString
-                        .replace(" ", "_")
-                        .replace("\n", "_");
-                databaseReference.child(telephoneNumber).child(newString).setValue(new LoggedInUser(personName, direction))
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    // Запись в базу данных прошла успешно
-                                    Toast.makeText(WritePageActivity.this, "Успешная запись!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(WritePageActivity.this, MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                } else {
-                                    // Возникла ошибка при записи в базу данных
-                                    Toast.makeText(WritePageActivity.this, "Ошибка при записи, повторите попытку!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
             }
         });
 
+    }
+
+    public void makeWriteForCourses(DatabaseReference databaseReference, String telephoneNumber, String personName) {
+        String oldString = direction;
+        String newString = oldString
+                .replace(" ", "_")
+                .replace("\n", "_");
+        databaseReference.child(telephoneNumber).child(newString).setValue(new LoggedInUser(personName, direction))
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Запись в базу данных прошла успешно
+                            Toast.makeText(WritePageActivity.this, "Успешная запись!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(WritePageActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        } else {
+                            // Возникла ошибка при записи в базу данных
+                            Toast.makeText(WritePageActivity.this, "Ошибка при записи, повторите попытку!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     public void changeTelephoneNumberForAuthUser() {

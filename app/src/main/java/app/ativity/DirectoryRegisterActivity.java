@@ -37,6 +37,7 @@ public class DirectoryRegisterActivity extends AppCompatActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private EditText phone;
     private EditText otp;
+    private boolean isEnteredCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +60,11 @@ public class DirectoryRegisterActivity extends AppCompatActivity {
         } else {
             // Пользователь не аутентифицирован, скрываем надпись для зарегистрированных пользователей
             informAboutAuth.setVisibility(View.GONE);
-
         }
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
                     @Override
@@ -85,12 +86,13 @@ public class DirectoryRegisterActivity extends AppCompatActivity {
                     }
                 };
                 String telephoneNumber = phone.getText().toString();
-                if (telephoneNumber.equals("+38")) {
+                if (telephoneNumber.equals("")) {
                     Toast.makeText(DirectoryRegisterActivity.this, "Введите номер телефона.", Toast.LENGTH_SHORT).show();
                 } else if (telephoneNumber.toCharArray().length != 10) {
                     Toast.makeText(DirectoryRegisterActivity.this, "Введеный номер не верен.", Toast.LENGTH_SHORT).show();
                 } else {
                     startPhoneNumberVerification(phone.getText().toString());
+                    isEnteredCode = true;
                     Toast.makeText(DirectoryRegisterActivity.this, "Ожидайте СМС с кодом.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -99,7 +101,16 @@ public class DirectoryRegisterActivity extends AppCompatActivity {
         buttonVerification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                verifyPhoneNumberWithCode(otp.getText().toString());
+                String code = otp.getText().toString();
+                if (!isEnteredCode) {
+                    Toast.makeText(DirectoryRegisterActivity.this, "Сначала получите код.", Toast.LENGTH_SHORT).show();
+                } else if (code.equals("")) {
+                    Toast.makeText(DirectoryRegisterActivity.this, "Вы не ввели код. Введите код.", Toast.LENGTH_SHORT).show();
+                } else if (code.toCharArray().length != 6) {
+                    Toast.makeText(DirectoryRegisterActivity.this, "Введеный код не верный.", Toast.LENGTH_SHORT).show();
+                } else {
+                    verifyPhoneNumberWithCode(otp.getText().toString());
+                }
             }
         });
 
@@ -143,11 +154,11 @@ public class DirectoryRegisterActivity extends AppCompatActivity {
                             startActivity(new Intent(DirectoryRegisterActivity.this, MainActivity.class));
                         } else {
                             // Sign in failed, display a message and update the UI
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(DirectoryRegisterActivity.this, "Введеный код не верный.", Toast.LENGTH_SHORT).show();
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
                             }
                         }
+
                     }
                 });
     }
