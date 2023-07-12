@@ -10,7 +10,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.view.Display;
@@ -26,9 +25,9 @@ public class GameView extends View {
 
     Context context;
     float ballX, ballY;
-    Velocity velocity = new Velocity(2, 4);
+    Velocity velocity = new Velocity(5, 9);
     Handler handler;
-    final long UPDATE_MILLIS = 6;
+    final long UPDATE_MILLIS = 1;
     Runnable runnable;
     Paint textPaint = new Paint();
     Paint healthPaint = new Paint();
@@ -107,88 +106,25 @@ public class GameView extends View {
         super.onDraw(canvas);
         ballX += velocity.getX();
         ballY += velocity.getY();
-//        if ((ballX >= dWidth - ball.getWidth()) || ballX <= 0) {
-//            velocity.setX(velocity.getX() * -1);
-//        }
+
         sideObstacles();
+
         if (ballY <= 0) {
             velocity.setY(velocity.getY() * -1);
         }
-        if (ballY > paddleY + paddle.getHeight()) {
-            ballX = 1 + random.nextInt(dWidth - ball.getWidth() - 1);
-            ballY = dHeight / 3;
-            if (miss != null) {
-                miss.start();
-            }
-            velocity.setX(xVelocity());
-            velocity.setY(xVelocity());
-            life--;
-            if (life == 0) {
-                gameOver = true;
-//                launchGameOver();
-            }
-        }
-        if (((ballX + ball.getWidth() * 0.75) >= paddleX)
-                && (ballX <= paddleX + paddle.getWidth())
-                && (ballY + ball.getHeight() >= paddleY)
-                && (ballY + ball.getHeight() <= paddleY + paddle.getHeight())) {
-            if (ping != null) {
-                ping.start();
-            }
-            velocity.setX(velocity.getX() + 1);
-            velocity.setY((velocity.getY() + 1) * -1);
-        }
+
+        ifBallIsDrop();
+        touchPaddle();
+
 //        Bitmap resizedBitmap = Bitmap.createScaledBitmap(ball, 100, 100, false);
         Bitmap pd = Bitmap.createScaledBitmap(paddle, 400, 150, false);
         canvas.drawBitmap(ball, ballX, ballY, null);
         canvas.drawBitmap(pd, paddleX, paddleY, null);
-        for (int i = 0; i < numBricks; i++) {
-            if (bricks[i].isVisible()) {
-                int x1 = bricks[i].row;
-                int y1 = bricks[i].column;
-                int x2 = bricks[i].width;
-                int y2 = bricks[i].height;
-                drawRectangleUseCanvas(x1, y1, x2, y2, canvas);
-            }
-        }
-        canvas.drawText("" + points, 20, TEXT_SIZE, textPaint);
-        if (life == 2) {
-            healthPaint.setColor(Color.YELLOW);
-        } else if (life == 1) {
-            healthPaint.setColor(Color.RED);
-        }
+
+        drawRectangleUseCanvas(canvas);
+        drawTextUseCanvas(canvas);
         canvas.drawRect(dWidth - 200, 30, dWidth - 200 + 60 * life, 80, healthPaint);
         checkCollision();
-//        for (int i = 0; i < numBricks; i++) {
-//            if (bricks[i].isVisible()) {
-//                int x1 = bricks[i].row;
-//                int y1 = bricks[i].column;
-//                int x2 = bricks[i].width;
-//                int y2 = bricks[i].height;
-////                left: Координата X левого верхнего угла прямоугольника.
-////                top: Координата Y левого верхнего угла прямоугольника.
-////                right: Координата X правого нижнего угла прямоугольника.
-////                bottom: Координата Y правого нижнего угла прямоугольника.
-////                paint: Кисть (Paint), которой будет производиться рисование прямоугольника.
-//                if (ballX + ballWidth / 2 >= x1
-//                        && ballY - ballWidth / 2 <= y2
-//                        && ballX + ballWidth / 2 <= x2
-//                        && ballY - ballWidth / 2 <= y2) {
-//                    if (destroy != null) {
-//                        destroy.start();
-//                    }
-//                    velocity.setY((velocity.getY() + 1) * (-1));
-//                    bricks[i].setVisible();
-//                    points += 10;
-//                    brokenBricks++;
-//                    if (brokenBricks == NEW_BRICKS_PER_ROW * NUMBERS_OF_COLUMN) {
-////                        launchGameOver();
-//                    }
-//                }
-////                if (ballX + ballWidth >= bricks[i].column * bricks[i].width
-//            }
-//        }
-
         if (brokenBricks == numBricks) {
             gameOver = true;
         }
@@ -249,6 +185,39 @@ public class GameView extends View {
 
     }
 
+    public void ifBallIsDrop() {
+        if (ballY > paddleY + paddle.getHeight()) {
+            ballX = 1 + random.nextInt(dWidth - ball.getWidth() - 1);
+            ballY = dHeight / 3;
+            if (miss != null) {
+                miss.start();
+            }
+            velocity.setX(xVelocity());
+            velocity.setY(xVelocity());
+            life--;
+            if (life == 0) {
+                gameOver = true;
+//                launchGameOver();
+            }
+        }
+    }
+
+    public void touchPaddle() {
+        if (((ballX + ball.getWidth()) >= paddleX)
+                && (ballX <= paddleX + paddle.getWidth())
+                && (ballY + ball.getHeight() >= paddleY)
+                && (ballY + ball.getHeight() <= paddleY + paddle.getHeight())) {
+            if (ping != null) {
+                ping.start();
+            }
+            velocity.setX(velocity.getX() + 1);
+            velocity.setY((velocity.getY() + 1) * -1);
+            if (ballY > paddleY + paddle.getHeight()) {
+                ballY = paddleY - paddleY / 2;
+            }
+        }
+    }
+
     public void createRectangle(int x1, int y1, int x2, int y2, Color color) {
         bricks[numBricks] = new Brick(x1, y1, x2, y2, color);
         numBricks++;
@@ -287,7 +256,7 @@ public class GameView extends View {
     }
 
     public int[] findBallRadians() {
-        int ballRadius = ballWidth / 4; // Радиус мяча
+        int ballRadius = ballWidth / 2; // Радиус мяча
         int numPoints = 12; // Количество крайних точек
         int[] ballRadians = new int[numPoints * 2];
         int angleStep = 360 / numPoints;
@@ -295,11 +264,11 @@ public class GameView extends View {
         for (int angle = 0; angle < 360; angle += angleStep) {
             // Вычисляем горизонтальную координату точки на границе окружности
             int x = (int) (ballX + ballRadius * Math.cos(Math.toRadians(angle)));
-            ballRadians[count] = x;
+            ballRadians[count] = x + ballRadius;
             count++;
             // Вычисляем вертикальную координату точки на границе окружности
             int y = (int) (ballY + ballRadius * Math.sin(Math.toRadians(angle)));
-            ballRadians[count] = y+ballRadius;
+            ballRadians[count] = y + ballRadius;
             count++;
         }
         return ballRadians;
@@ -362,7 +331,24 @@ public class GameView extends View {
         return num;
     }
 
-    public void drawRectangleUseCanvas(int x1, int y1, int x2, int y2, Canvas canvas) {
-        canvas.drawRect(x1, y1, x2, y2, brickPaint);
+    public void drawRectangleUseCanvas(Canvas canvas) {
+        for (int i = 0; i < numBricks; i++) {
+            if (bricks[i].isVisible()) {
+                int x1 = bricks[i].row;
+                int y1 = bricks[i].column;
+                int x2 = bricks[i].width;
+                int y2 = bricks[i].height;
+                canvas.drawRect(x1, y1, x2, y2, brickPaint);
+            }
+        }
+    }
+
+    private void drawTextUseCanvas(Canvas canvas) {
+        canvas.drawText("" + points, 20, TEXT_SIZE, textPaint);
+        if (life == 2) {
+            healthPaint.setColor(Color.YELLOW);
+        } else if (life == 1) {
+            healthPaint.setColor(Color.RED);
+        }
     }
 }
