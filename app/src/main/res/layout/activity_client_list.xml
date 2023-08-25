@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ativity.ClientListActivity">
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="367dp"
+        android:layout_height="107dp"
+        android:contentDescription="@string/logo_activity_add_new_client"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/svg" />
+
+    <EditText
+        android:id="@+id/find_client_window"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="@font/rotondac_thin"
+        android:text="Поиск"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/client_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="50dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/find_client_window"
+        tools:listitem="@layout/client_info_item" />
+
+    <ImageView
+        android:id="@+id/seach_icon"
+        android:layout_width="37dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_menu_search"
+        app:layout_constraintBottom_toTopOf="@+id/client_list"
+        app:layout_constraintStart_toEndOf="@+id/find_client_window"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

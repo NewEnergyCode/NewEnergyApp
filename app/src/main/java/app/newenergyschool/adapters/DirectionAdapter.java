@@ -45,8 +45,14 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.Dire
     @Override
     public void onBindViewHolder(@NonNull DirectionViewHolder holder, int position) {
 //        holder.directionCourses.setCardBackgroundColor(Color.parseColor(directionList.get(position).getColor())); //get color for our image fone
-        int imageId = context.getResources().getIdentifier("ic_" + directionList.get(position).getImg(), "drawable", context.getPackageName());
-        int imageLogo = context.getResources().getIdentifier("ic_" + directionList.get(position).getLogoDirection(), "drawable", context.getPackageName());
+        int imageId = context.getResources()
+                .getIdentifier("ic_" + directionList.get(position).getImg()
+                        , "drawable"
+                        , context.getPackageName());
+        int imageLogo = context.getResources()
+                .getIdentifier("ic_" + directionList.get(position).getLogoDirection()
+                        , "drawable"
+                        , context.getPackageName());
         holder.directionImage.setImageResource(imageId);
         holder.directionLogo.setImageResource(imageLogo);
         holder.directionTitle.setText(directionList.get(position).getTitle());

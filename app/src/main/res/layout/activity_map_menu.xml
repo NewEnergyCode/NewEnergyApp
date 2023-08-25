@@ -67,6 +67,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contacts" />
 
+    <TextView
+        android:id="@+id/admin_page"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/rotonda_bold"
+        android:gravity="center_horizontal"
+        android:onClick="adminPage"
+        android:text="Страница администратора"
+        android:textColor="#00BCD4"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cabinet" />
+
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="315dp"
@@ -75,5 +92,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/svg" />
+
+    <Button
+        android:id="@+id/game_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bg_button_rounded"
+        android:fontFamily="@font/rotonda_bold"
+        android:onClick="gameMenu"
+        android:text="@string/game_button"
+        android:textColor="@color/mainBg"
+        android:textSize="20sp"
+        app:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ package app.newenergyschool.game;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -17,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import app.newenergyschool.R;
+import app.newenergyschool.ativity.MainActivity;
 
 import java.util.Random;
 
@@ -162,8 +164,8 @@ public class GameView extends View {
 
     private void launchGameOver() {
         handler.removeCallbacksAndMessages(null);
-//        Intent intent = new Intent(context, MainActivity.class);
-//        context.startActivity(intent);
+        Intent intent = new Intent(context, GameView.class);
+        context.startActivity(intent);
         ((Activity) context).finish();
     }
 
@@ -197,7 +199,7 @@ public class GameView extends View {
             life--;
             if (life == 0) {
                 gameOver = true;
-//                launchGameOver();
+                launchGameOver();
             }
         }
     }

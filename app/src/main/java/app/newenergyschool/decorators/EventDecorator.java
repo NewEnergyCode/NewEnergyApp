@@ -24,7 +24,7 @@ public class EventDecorator implements DayViewDecorator {
 
     @Override
     public void decorate(DayViewFacade view) {
-        view.addSpan(new DotSpan(15, Color.rgb(255, 102, 51))); // Замените цветом
+        view.addSpan(new DotSpan(15, Color.rgb(255, 102, 51))); // Замена цвета
     }
 
 

@@ -90,7 +90,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     public CalendarDay convertDateToCalendarDay(String date) {
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
             Date parsedDate = dateFormat.parse(date);
             return calendarDate(parsedDate);
         } catch (ParseException e) {
@@ -127,7 +127,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     public void showDirectionAndTimeOfLesson(CalendarDay date, List<Lesson> lessonList) {
         // Обработка выбранной даты
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         // Преобразование даты в строку
 //                databaseReference.child(telephoneNumber).child(dateString).setValue(new Lesson(telephoneNumber, "Мини сад", "12.00", "12-07-2023"));
         TextView calendarDirection = findViewById(R.id.calendar_direction);

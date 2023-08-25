@@ -24,9 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +47,7 @@ public class WritePageActivity extends AppCompatActivity {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("RegistrationForCourses");
         Button buttonWrite = findViewById(R.id.button_write);
         EditText phone = findViewById(R.id.editTextPhone);
-        EditText name = findViewById(R.id.editTextTextPersonName);
+        EditText name = findViewById(R.id.client_first_name);
 
 
         buttonWrite.setOnClickListener(new View.OnClickListener() {
